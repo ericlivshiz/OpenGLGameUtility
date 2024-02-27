@@ -2,7 +2,8 @@
 
 Program::Program()
 	:
-	window{ SCR_WIDTH, SCR_HEIGHT}
+	window{ SCR_WIDTH, SCR_HEIGHT},
+	player{PLAYER_SPEED, PLAYER_SHIFT_SPEED, PLAYER_CROUCH_SPEED}
 {
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
@@ -32,13 +33,14 @@ void Program::Handle_Input()
 
 	if (keyboard.ESC_PRESS)
 		window.Close_Window();
-
-	glfwPollEvents();
 }
 
 void Program::Update()
 {
-	// Call functions that update something every frame
+	glfwSwapBuffers(window.Get_Window());
+	glfwPollEvents();
+
+	Sync_PlayerAndKeyboard();
 }
 
 void Program::Display()
@@ -53,4 +55,30 @@ void Program::Display()
 void Program::Stop()
 {
 	Program_Running = false;
+}
+
+void Program::Sync_PlayerAndKeyboard()
+{
+	if (keyboard.A_PRESS || keyboard.D_PRESS || keyboard.S_PRESS || keyboard.W_PRESS)
+		player.Moving = true;
+
+	if (keyboard.L_CTRL_PRESS)
+	{
+		player.Crouched = true;
+	}
+
+	if (keyboard.L_CTRL_RELEASE)
+	{
+		player.Crouched = false;
+	}
+
+	if (keyboard.L_SHIFT_PRESS)
+	{
+		player.ShiftWalking = true;
+	}
+
+	if (keyboard.L_SHIFT_RELEASE)
+	{
+		player.ShiftWalking = false;
+	}
 }

@@ -5,6 +5,30 @@ void Keyboard::Process_KeyInput(GLFWwindow* window)
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		ESC_PRESS = true;
 
+	if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+	{
+		L_SHIFT_PRESS = true;
+		L_SHIFT_RELEASE = false;
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
+	{
+		L_CTRL_PRESS = true;
+		L_CTRL_RELEASE = false;
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_RELEASE)
+	{
+		L_SHIFT_RELEASE = true;
+		L_SHIFT_PRESS = false;
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_RELEASE)
+	{
+		L_CTRL_RELEASE = true;
+		L_CTRL_PRESS = false;
+	}
+
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 	{
 		W_PRESS = true;

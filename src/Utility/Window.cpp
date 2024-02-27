@@ -24,6 +24,8 @@ Window::Window(unsigned& screenWidth, unsigned& screenHeight)
 	}
 
 	glfwMakeContextCurrent(window);
+	glfwSetFramebufferSizeCallback(window, Framebuffer_Size_Callback);
+
 }
 
 GLFWwindow* Window::Get_Window() const
@@ -44,6 +46,13 @@ unsigned Window::Get_Height()
 void Window::Close_Window()
 {
 	glfwSetWindowShouldClose(window, GLFW_TRUE);
+}
+
+// make sure the viewport matches the new window dimensions; note that width and 
+// height will be significantly larger than specified on retina displays.
+void Window::Framebuffer_Size_Callback(GLFWwindow* window, int width, int height)
+{
+	glViewport(0, 0, width, height);
 }
 
 Window::~Window() {
