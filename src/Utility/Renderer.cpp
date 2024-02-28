@@ -1,8 +1,10 @@
 #include "Renderer.h"
 
-Renderer::Renderer()
+Renderer::Renderer(Window& window)
+	:
+	window{window}
 {
-	// Should take window as argument and create Window& window private member
+
 }
 
 void Renderer::Pre_Render()

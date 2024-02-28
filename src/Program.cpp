@@ -3,7 +3,10 @@
 Program::Program()
 	:
 	window{ SCR_WIDTH, SCR_HEIGHT},
-	player{PLAYER_SPEED, PLAYER_SHIFT_SPEED, PLAYER_CROUCH_SPEED}
+	renderer{window},
+	mouse{camera, window, MOUSE_SENSITIVITY},
+	camera{glm::vec3(0.0f, PLAYER_HEIGHT, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f},
+	player{PLAYER_HEIGHT, PLAYER_SPEED, PLAYER_SHIFT_SPEED, PLAYER_CROUCH_SPEED}
 {
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
@@ -21,6 +24,8 @@ void Program::Program_Loop()
 {
 	while (!glfwWindowShouldClose(window.Get_Window()))
 	{
+		float Current_Frame = static_cast<float>(glfwGetTime());
+		Delta_Time = Current_Frame - Last_Frame;
 		Handle_Input();
 		Update();
 		Display();
@@ -59,7 +64,7 @@ void Program::Stop()
 
 void Program::Sync_PlayerAndKeyboard()
 {
-	if (keyboard.A_PRESS || keyboard.D_PRESS || keyboard.S_PRESS || keyboard.W_PRESS)
+	if (keyboard.W_PRESS || keyboard.A_PRESS || keyboard.S_PRESS || keyboard.D_PRESS)
 		player.Moving = true;
 
 	if (keyboard.L_CTRL_PRESS)
@@ -67,7 +72,7 @@ void Program::Sync_PlayerAndKeyboard()
 		player.Crouched = true;
 	}
 
-	if (keyboard.L_CTRL_RELEASE)
+	if (!keyboard.L_CTRL_PRESS)
 	{
 		player.Crouched = false;
 	}
@@ -77,8 +82,18 @@ void Program::Sync_PlayerAndKeyboard()
 		player.ShiftWalking = true;
 	}
 
-	if (keyboard.L_SHIFT_RELEASE)
+	if (!keyboard.L_SHIFT_PRESS)
 	{
 		player.ShiftWalking = false;
+	}
+
+	if (keyboard.SPACE_PRESS)
+	{
+		player.Jumping = true;
+	}
+
+	if (!keyboard.SPACE_PRESS)
+	{
+		player.Jumping = false;
 	}
 }

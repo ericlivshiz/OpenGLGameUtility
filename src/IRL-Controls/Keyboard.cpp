@@ -8,72 +8,70 @@ void Keyboard::Process_KeyInput(GLFWwindow* window)
 	if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
 	{
 		L_SHIFT_PRESS = true;
-		L_SHIFT_RELEASE = false;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
 	{
 		L_CTRL_PRESS = true;
-		L_CTRL_RELEASE = false;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_RELEASE)
 	{
-		L_SHIFT_RELEASE = true;
 		L_SHIFT_PRESS = false;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_RELEASE)
 	{
-		L_CTRL_RELEASE = true;
 		L_CTRL_PRESS = false;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 	{
 		W_PRESS = true;
-		W_RELEASE = false;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
 	{
 		A_PRESS = true;
-		A_RELEASE = false;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 	{
 		S_PRESS = true;
-		S_RELEASE = false;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 	{
 		D_PRESS = true;
-		D_RELEASE = false;
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+	{
+		SPACE_PRESS = true;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_RELEASE)
 	{
-		W_RELEASE = true;
 		W_PRESS = false;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_RELEASE)
 	{
-		A_RELEASE = true;
 		A_PRESS = false;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_RELEASE)
 	{
-		S_RELEASE = true;
 		S_PRESS = false;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_RELEASE)
 	{
-		D_RELEASE = true;
 		D_PRESS = false;
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_RELEASE)
+	{
+		SPACE_PRESS = false;
 	}
 }

@@ -6,9 +6,12 @@ class Renderer
 {
 	// Constructor should contain window
 public:
-	Renderer();
+	Renderer(Window& window);
 
 	void Pre_Render();
 	void Render();
 	void Post_Render();
+
+private:
+	Window& window;
 };

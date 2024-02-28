@@ -14,12 +14,7 @@ public:
 	bool D_PRESS = false;
 	bool L_SHIFT_PRESS = false;
 	bool L_CTRL_PRESS = false;
-	
-	bool L_SHIFT_RELEASE = false;
-	bool L_CTRL_RELEASE = false;
-	bool W_RELEASE = false;
-	bool A_RELEASE = false;
-	bool S_RELEASE = false;
-	bool D_RELEASE = false;
+	bool SPACE_PRESS = false;
+
 
 };

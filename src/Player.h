@@ -4,7 +4,7 @@
 class Player
 {
 public:
-	Player(const float SPEED, const float SHIFT_SPEED, const float CROUCH_SPEED);
+	Player(const float PLAYER_HEIGHT, const float SPEED, const float SHIFT_SPEED, const float CROUCH_SPEED);
 	void Shift_Walk();
 	void Crouch_Walk();
 
@@ -13,8 +13,12 @@ public:
 	bool ShiftWalking;
 	bool Crouched;
 	bool Moving;
+	bool Jumping;
+	unsigned int Health;
+	float Velocity;
 
 	const float SPEED;
 	const float SHIFT_SPEED;
 	const float CROUCH_SPEED;
+	const float HEIGHT;
 };
